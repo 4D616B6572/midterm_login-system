@@ -59,7 +59,8 @@ users.post('/login', (req, res) => {
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {// need to use "user.dataValues"(object) instead of "user"(promise)
                         expiresIn: 1440
                     })
-                    res.send({token: token, user: user.dataValues});
+                    // res.send({token: token, user: user.dataValues});
+                    res.send(token);
                 }
             } else {
                 res.status(400).json({ error: 'User does not exist!' });
