@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 
 class Navbar extends Component {
-    logOut(e) {
+    logOut = e => {
         e.preventDefault()
         localStorage.removeItem('usertoken')
         this.props.history.push(`/`);
@@ -33,14 +33,14 @@ class Navbar extends Component {
                 </li>
                 <li className="nav-item">
                     {/* register the event so use <a> not <Link> */}
-                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                    <a href="#" onClick={this.logOut} className="nav-link">
                         Logout
                     </a>
                 </li>
             </ul>
         )
         return (
-            <nav className="navbar navbar-expend-lg navbar-dark bg-dark rounded">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <button className="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
@@ -53,18 +53,20 @@ class Navbar extends Component {
 
                 <div className="collapse navbar-collapse justify-content-md-center"
                     id="navbar1">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <Link to="/" className="nav-link">
-                                Home
+                    {localStorage.usertoken ? null :
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link">
+                                    Home
                             </Link>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    }
                     {localStorage.usertoken ? userLink : loginRegLink}
                 </div>
             </nav>
         )
-    } 
+    }
 }
 
 // use this HOC (withRouter) to solve the internal routing problem....

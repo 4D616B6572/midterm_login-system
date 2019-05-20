@@ -61,6 +61,8 @@ users.post('/login', (req, res) => {
                     })
                     // res.send({token: token, user: user.dataValues});
                     res.send(token);
+                }else{
+                    res.status(400).json({ error: 'password wrong' });
                 }
             } else {
                 res.status(400).json({ error: 'User does not exist!' });

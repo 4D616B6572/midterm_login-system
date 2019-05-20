@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import {login} from './userFunction';
+import { login } from './userFunction';
 
 
 class Login extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            email:'',
-            password:''
+            email: '',
+            password: '',
+            success: 1
         }
 
         //this.onChange = this.onChange.bind(this);
         //this.onSubmit = this.onSubmit.bind(this);
     }
 
-    onChange = (e)=>{
-        this.setState({[e.target.name]: e.target.value});
+    onChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     onSubmit = (e) => {
@@ -26,11 +27,18 @@ class Login extends Component {
         }
 
         login(user).then(res => {
-            this.props.history.push(`/profile`)
+            if (res === localStorage.usertoken && res != undefined) {
+                //console.log(res);
+                this.setState({success: 1});
+                this.props.history.push(`/profile`)
+            } else {
+                this.setState({success: 0});
+                //console.log(this.state.success);
+            }
         })
 
     }
-    
+
     render() {
         return (
             <div className="container">
@@ -42,31 +50,38 @@ class Login extends Component {
                             </h1>
                             <div className="form-group">
                                 <label htmlFor="email">Email Address</label>
-                                <input type="email" 
-                                className="form-control"
-                                name="email"
-                                placeholder="Enter email"
-                                value={this.state.email}
-                                onChange={this.onChange}
-                                />
-                            </div> 
-                            <div className="form-group">
-                                <label htmlFor="password">Email Address</label>
-                                <input type="password" 
-                                className="form-control"
-                                name="password"
-                                placeholder="Enter Password"
-                                value={this.state.password}
-                                onChange={this.onChange}
+                                <input type="email"
+                                    className="form-control"
+                                    name="email"
+                                    placeholder="Enter email"
+                                    value={this.state.email}
+                                    onChange={this.onChange}
                                 />
                             </div>
-
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <input type="password"
+                                    className="form-control"
+                                    name="password"
+                                    placeholder="Enter Password"
+                                    value={this.state.password}
+                                    onChange={this.onChange}
+                                />
+                            </div>
                             <button className="btn btn-lg btn-primary btn-block"
-                            type="submit">
+                                type="submit">
                                 Sign in
-                            </button>                         
+                            </button>
                         </form>
-                    
+                        <br></br>
+                        {(this.state.success)?
+                            null
+                            : 
+                              <div className="alert alert-danger">
+                                <strong>Wrong Password or Invalid Account</strong> please try it again or go sign up!
+                              </div>}
+
+
                     </div>
                 </div>
             </div>
