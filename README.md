@@ -1,14 +1,8 @@
-# Discuss Room 學生線上討論平台
+# Midterm Project - login system 
 
-***1. Vision:***
-- Build a solid (hopefully) online application for NTU students to have another choice to discuss in a certain private space rather than **facebook group**, which is totally annoying.
-- As long as you have NTU email account, you'll be able to use this service (maybe in the future).
- 
-***2. Main function in this project:***
-- Login and register (done!)
-- **Heroku** for cloud server (done!)
-- main file structure for discuss room (not yet..)
-- yet to figure out the rest of the parts...
+## Name
+
+a loging system can be implemented to any kind of application...(實在沒有特別想做的東西...)
 
 ## Installation
 ### local install
@@ -37,3 +31,25 @@ npm run dev
 ```
 npm start
 ```
+### Heroku deployed link:
+## how to use
+1. Sign up/in for the login system
+2. if you not yet register for a new account or type wrong password, it will show error
+3. if succeed to login, you will see your profile info
+## frameworks / node packages / Reference
+#### frameworks
+1. React, React-router
+2. Express
+3. bootstrap 4
+#### node packages (只提這次實作覺得很酷的)
+1. axios
+2. bcryptjs
+3. jsonwebtoken
+4. sequelize
+#### reference
+1. ***基本上純手刻，只有看網路上若要做這類登入系統需要哪些東西***
+## Contribution
+1. Client-side programs in React.js
+2. Server-side programs in Node.js
+## Review
+因為實在想不到自己想做的東西，所以把所有時間都花在看 login system 怎麼做才能做得比較好 (密碼加密，token 之類的東西)。此次的 midterm-project 看了滿多新的 package 也有滿深入的去看每個 package 的使用方式，這是我覺得是收穫最多的部分。當時只是想說反正都要 deploy 到 heroku，就也去嘗試了沒用過的 postgre database (heroku default 的 database)，其實跟 mysql 差不多，不過經過研究後我個人覺得稍微比 mysql 直觀且更好用。
