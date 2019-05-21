@@ -29,9 +29,10 @@ npm run dev
 ```
 (3) start the react app
 ```
+cd client/
 npm start
 ```
-### Heroku deployed link:
+you will see the page showing at localhost:3000! ***I also use the proxy***
 ## how to use
 1. Sign up/in for the login system
 2. if you not yet register for a new account or type wrong password, it will show error

@@ -15,10 +15,9 @@ class LandingPage extends Component {
         return (
             <div className="container">
                 <div className="jumbotron mt-5">
-                    <h1 className="display-4">NTU courses online discussion room</h1>
-                    <p className="lead">courses discuss platform only for NTU students</p>
+                    <h1 className="display-4">Login system</h1>
+                    <p className="lead">a login system can be implemented into any kind of application</p>
                     <hr className="my-4"></hr>
-                        <p>please use your NTU mail to sign up!</p>
                         <p className="lead">
                             <a className="btn btn-primary btn-lg" href="#" role="button" onClick={this.changeToSignUp}>Sign up now!</a>
                             <span></span>
