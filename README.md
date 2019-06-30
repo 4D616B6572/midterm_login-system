@@ -7,17 +7,39 @@ a loging system can be implemented to any kind of application...(實在沒有特
 ## Installation
 ### local install
 1. install postgres (download link: https://postgresapp.com/, and follow the install steps)
-> after install postgres database, use **terminal** to implement the following commands
+> after install postgres database, use **terminal** to implement the following commands **(this is only based on Mac, Windows and Linux will be more complicated!)**
 
 (1) login to database
 ```
 psql -h localhost
 ```
-(2) create table
+(2) then it'll show something like this:
 ```
-create table users (id serial primary key, first_name text, last_name text, email text, password text, created text);
+Type "help" for help.
+
+ryanhu=# (you can type something here)
 ```
-2. normal process to start the web
+(3) please type:
+```
+ryanhu=# \l
+```
+and you will see you default database name also username
+
+2. change **database name** and **username** as your own default value in **database/database.js** there is a chunk of code showed as below:(after download postgresql on Mac env, you will see it), and of course, saved it.
+```javascript=
+const sequelize = new Sequelize('<database name>', '<username>', null, {
+  host: 'localhost',
+  dialect: 'postgres'
+  
+  // some code here...
+});
+```
+
+(3) create table: the code below is based on my env, so the username may be different from mine.
+```
+ryanhu=# create table users (id serial primary key, first_name text, last_name text, email text, password text, created text);
+```
+3. install npm package and start the application as a normal way
 
 (1) download the dependencies
 ```
@@ -54,3 +76,5 @@ you will see the page showing at localhost:3000! ***I also use the proxy***
 2. Server-side programs in Node.js
 ## Review
 因為實在想不到自己想做的東西，所以把所有時間都花在看 login system 怎麼做才能做得比較好 (密碼加密，token 之類的東西)。此次的 midterm-project 看了滿多新的 package 也有滿深入的去看每個 package 的使用方式，這是我覺得是收穫最多的部分。當時只是想說反正都要 deploy 到 heroku，就也去嘗試了沒用過的 postgre database (heroku default 的 database)，其實跟 mysql 差不多，不過經過研究後我個人覺得稍微比 mysql 直觀且更好用。
+
+
